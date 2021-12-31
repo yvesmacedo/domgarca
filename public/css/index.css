@@ -1,0 +1,226 @@
+/*THEME-------------------------------------------------------*/
+html{
+  background-color: #8BC6EC;
+  background-image: url("/public/img/bg.jpg");
+  /*background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);*/
+  margin:0!important;
+  padding:0!important;
+  /*min-height:100vh;*/
+  max-width: 100%;
+  overflow-x:hidden;
+  background-attachment: fixed;
+}
+
+
+input[type="checkbox"]{
+  outline:none;
+  border:1px solid #ced4da;
+}
+
+label{
+  padding:0px!important;
+  margin:0px!important;
+}
+
+body{
+  background:none!important;
+  max-width:100%!important;
+}
+
+table{
+  width:100%;
+}
+
+table th{
+  padding-left:10px;
+  padding-right:10px;
+  color:#333;
+  border-bottom: 1px solid #ccc;
+}
+
+table td{
+  padding-left:10px;
+  padding-right:10px;
+  cursor:pointer;
+  color:#333;
+  border-bottom: 1px solid #ccc;/*#eee;*/
+}
+
+.list td{
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+tbody tr:hover{
+  background:  #fafafa;
+}
+
+tbody tr.list-line-active{
+  background: #eee!important;
+}
+
+.buttons-container{
+  padding:7px;
+}
+
+.list-line-hidden{
+  display:none;
+}
+
+.form-control,.btn{
+  border-radius: 0px!important;
+}
+/*THEME-------------------------------------------------------*/
+
+.limpar{
+  width:100%;
+  float:left;
+}
+
+#add{
+  cursor: pointer;
+  float:right;
+}
+
+/*LOGIN FORM-------------------------------------------------------*/
+.form-control{
+  margin-bottom:10px!important;
+}
+
+#logo{
+  text-align: center;
+  margin-bottom:15px;
+}
+
+#logo img{
+  width:75px;
+}
+
+#login-form{
+  width:300px;
+  margin:auto;
+  margin-top:10%;
+  background: #fafafa;
+  padding:15px;
+}
+
+/*LOGIN FORM-------------------------------------------------------*/
+
+/*NAVBAR----------------------------------------------------------*/
+nav{
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:300px;
+  height:100%;
+  background: #fff;
+}
+
+nav a{
+  display: block;
+  padding:13px 15px;
+  cursor: pointer;
+}
+
+nav button{
+  margin-top:-41px;
+  margin-right: 9px;
+}
+
+#search{
+  width:100%;
+  padding:12px 15px 12px 40px;
+  background-image: url('/public/img/lupa.png');
+  background-repeat: no-repeat!important;
+  background-position: 16px 16px;
+  outline: none!important;
+  border:none!important;
+  /*border-top:1px solid #eee!important;*/
+  border-bottom:1px solid #eee!important;
+}
+
+.select-search{
+  padding:12px 15px 12px 30px;
+  background-image: url('/public/img/lupa.png');
+  background-repeat: no-repeat!important;
+  background-position: 10px 10px;
+}
+
+/*NAVBAR----------------------------------------------------------*/
+
+/*MAIN----------------------------------------------------------*/
+main{
+  margin-left: 300px!important;
+  padding: 15px 25px;
+}
+/*MAIN----------------------------------------------------------*/
+
+/*FORM----------------------------------------------------------*/
+#ask_before_go{
+  background: #eee;
+  width:300px;
+  position:fixed;
+  top:0px;
+  left:300px;
+  padding-left:20px;
+  padding-right:20px;
+  padding-top:20px;
+  padding-bottom:20px;
+  z-index: 10;  
+}
+
+#ask_before_go_protect{
+  position:fixed;
+  top:0px;
+  left:300px;
+  background:#000;
+  opacity: 0.5;
+  width:100%;
+  height:100%;
+  z-index:9;
+}
+
+#add-form{
+  background: #eee;
+  width:300px;
+  position:fixed;
+  top:0px;
+  left:300px;
+  padding-left:20px;
+  padding-right:20px;
+  height:100%;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  z-index: 10;
+}
+
+#add-form::-webkit-scrollbar{
+  width:0px;
+}
+
+#close-form{
+  position:fixed;
+  top:0px;
+  left:300px;
+  background:#000;
+  opacity: 0.5;
+  width:100%;
+  height:100%;
+  z-index:9;
+}
+/*FORM----------------------------------------------------------*/
+
+#loading{
+  position:fixed;
+  top:10px;
+  left:245px;
+  z-index: 1000;
+  width: 40px;
+}
+
+#status_button{
+  position: fixed;
+  bottom:10px;
+  left:10px;
+  width:280px;
+}

@@ -1,0 +1,140 @@
+{% if form %}
+<form id="add-form"{% if id == 0 %} style="display:none" {% endif %}><br/>
+	{% for f in form.fields %}
+		{% if f.type == 'hidden' %}
+		<input type='hidden' name='{{ f.name }}' value='{{ f.value }}' class='input'/>
+		{% endif %}
+		
+		{% if f.type == 'text' %}
+		<div class='input-container'>
+			<label>{{ f.label }}</label><br/>
+			<input type='text' name='{{ f.name }}' value='{{ f.value }}' class='form-control input'/>
+		</div>
+		{% endif %}
+
+		{% if f.type == 'sim_nao' %}
+		<div class='input-container'>
+			<input type="checkbox" id="checkbox-{{ f.name }}" onchange="__checkbox('checkbox-{{ f.name }}')" {% if f.value == 1 %} checked{% endif %}/>
+			<input type="hidden" name="{{ f.name }}" value="{{ f.value }}" id="checkbox-{{ f.name }}-value"/>
+			<label>{{ f.label }}</label>
+		</div>
+		{% endif %}
+
+		{% if f.type == 'list' %}
+		<div class='input-container'>
+			<label>{{ f.label }}</label><br/>
+			<select name="{{ f.name }}" class="form-control input">
+				<option value="0"></option>
+				{% for i in f.itens %}
+					{% if i.value == f.value %}
+					<option value="{{ i.value }}" selected>{{ i.text }}</option>
+					{% else %}
+					<option value="{{ i.value }}">{{ i.text }}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+		</div>
+		{% endif %}
+
+		{% if f.type == 'fone' %}
+		<div class='input-container'>
+			<label>{{ f.label }}</label><br/>
+			<input type='text' name='{{ f.name }}' value='{{ f.value }}' class='form-control input' onkeyup='telefone(this)' maxlength='15'/>
+		</div>
+		{% endif %}
+
+		{% if f.type == 'textarea' %}
+		<div class='input-container'>
+			<label>{{ f.label }}</label><br/>
+			<textarea name='{{ f.name }}' rows="4" class='form-control input'>{{ f.value }}</textarea>
+		</div>
+		{% endif %}
+
+		{% if f.type == 'select' %}
+		<div class='input-container'>
+			<label>{{ f.label }}</label><br/>
+			<input
+				id="select_search_{{ f.name }}"
+				type="text"
+				class="form-control select-search"
+				onkeyup="select_search('select_search_{{ f.name }}')"/>
+
+				<a 
+					id="select_search_{{ f.name }}_button"
+					class="btn btn-sm btn-primary"
+					style="margin-top:-44px;margin-right:3px;float:right;color:white;display:none"
+					onclick="adicionar_nova_especialidade('select_search_{{ f.name }}')">
+                	<i class="fa fa-plus"></i>
+                </a>
+			
+			<select id="select_search_{{ f.name }}_select" name="{{ f.name }}" size="5" class="form-control input">
+				<option value="0">DEIXAR EM BRANCO</option>
+				{% for i in f.itens %}
+					{% if i.id == f.value %}
+					<option value="{{ i.id }}" selected>{{ i.descricao }}</option>
+					{% else %}
+					<option value="{{ i.id }}">{{ i.descricao }}</option>
+					{% endif %}
+				{% endfor %}
+			</select><select id="select_search_{{ f.name }}_dados" style="display:none"></select>		
+		</div>
+		{% endif %}
+	{% endfor %}
+	<div class='limpar'></div>
+	<div class='input-container'>
+		<input type="button" value="Salvar" class="btn btn-primary" onclick="post('{{ form.action }}')"/>
+		<input type="button" value="Fechar" class="btn btn-danger" onclick="close_form()" id="fechar_form_mobile"/>
+	</div><br/><br/>
+</form><div id='close-form' onclick="close_form()"{% if id == 0 %} style='display:none'{% endif %}></div>
+{% endif %}
+
+{% if table %}
+<table class="list">
+	<thead>
+		<tr>
+		{% for th in table.head %}
+			<th>{{ th }}</th>
+		{% endfor %}
+		</tr>
+	</thead>
+	<tbody>
+	{% for tr in table.body %}
+		<tr id="linha_{{ tr.0 }}" onclick='open_buttons(this,{{ tr.0 }})'>
+			{% for td in tr.1 %}
+				<td>{{ td }}</td>
+			{% endfor %}
+		</tr>
+		<tr class="list-line-hidden">
+			<td colspan="{{ table.head|length }}" class='buttons-container'>
+			{% for b in table.buttons %}
+			<button id="button_{{ tr.0 }}" class="btn btn-sm btn-{{ b.btn }}" onclick="{{ b.action }}">
+				<i class='fa fa-{{ b.icon }}'></i>
+			</button>
+			{% endfor %}
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<div id='ask_before_go' style='display:none'>
+    <label id='ask_before_go_label'></label><br/>
+    <input type='hidden' id='ask_before_go_url'/>
+    <input type='button' value='Sim' class='btn btn-primary' onclick='ask_before_go_action()'/>
+    <input type='button' value='Não' class='btn btn-danger' onclick='ask_before_go_close()'/>
+</div><div id='ask_before_go_protect' onclick='ask_before_go_close()' style='display:none'></div>
+{% endif %}
+
+<script>close_menu();</script>
+
+{% if menu %}
+<script>
+$(".form-button").css({"display":"none"});
+$(".form-container").css({"background":"none"});
+
+$("#{{ menu }}-button").css({"display":"block"});
+$("#{{ menu }}-container").css({"background":"#eee"});
+
+document.getElementById("search").placeholder = "Buscar {{ title }}";
+$("#search").css({"display":"block"});
+</script>
+{% endif %}

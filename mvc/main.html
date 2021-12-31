@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/public/img/favicon.ico" />
+        <link rel="stylesheet" href="/public/css/vanilla-calendar-min.css">
+        <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/public/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/public/css/index.css">
+        <link rel="stylesheet" href="/public/css/mobile.css">    
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="/public/js/vanilla-calendar-min.js"></script>
+        <script src="/public/js/index.js"></script>
+        <title>Doctor</title>
+    </head>
+    <body onresize="close_menu()">
+        <nav>
+            <input type="text" id="search" placeholder="Buscar" onkeyup="searching(this)"/>
+            <div id="menus-container">
+                {% for n in nav %}
+                    <a id='{{ n.id }}-container' class="form-container" onclick="go('{{ n.url }}')">{{ n.label }}</a>
+                    <button id='{{ n.id }}-button' onclick='open_form()' class='btn btn-sm btn-primary form-button' style='display:none;float:right'>
+                        <i class='fa fa-plus'></i>
+                    </button>
+                {% endfor %}
+            </div>
+            
+            <a
+                onclick="open_menu()"
+                id="open_menu"
+                class="btn btn-primary"
+                src="/public/img/logo.png"
+                style="position:fixed;top:5px;right:0px;color:white">
+                <i class='fa fa-plus'></i>
+            </a>     
+        </nav>
+                
+        <div id="loading" class="text-center" style="display:none">
+            <div class="loader loader--style6" title="5">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                    <rect x="0" y="13" width="4" height="5" fill="#333">
+                        <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0s" dur="0.6s" repeatCount="indefinite"/>
+                        <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0s" dur="0.6s" repeatCount="indefinite"/>
+                    </rect>
+                    <rect x="10" y="13" width="4" height="5" fill="#333">
+                        <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0.15s" dur="0.6s" repeatCount="indefinite"/>
+                        <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0.15s" dur="0.6s" repeatCount="indefinite"/>
+                    </rect>
+                    <rect x="20" y="13" width="4" height="5" fill="#333">
+                        <animate attributeName="height" attributeType="XML" values="5;21;5" begin="0.3s" dur="0.6s" repeatCount="indefinite"/>
+                        <animate attributeName="y" attributeType="XML" values="13; 5; 13" begin="0.3s" dur="0.6s" repeatCount="indefinite"/>
+                    </rect>
+                </svg>
+            </div>
+        </div>
+
+        <main></main>
+
+        <input type="hidden" id="current"/>
+        <script>go("{{ init }}");</script>
+    </body>
+</html>
