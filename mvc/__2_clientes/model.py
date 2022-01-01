@@ -40,27 +40,15 @@ class ClientesModel(SQLObject):
 			"class":""
 		},{
 			"type":"text",
-			"label":"Descrição",
-			"name":"descricao",
-			"value":c.descricao if c else "",
+			"label":"Whatsapp",
+			"name":"whatsapp",
+			"value":c.whatsapp if c else "",
 			"class":""
 		},{
-			"type":"text",
-			"label":"Categoria",
-			"name":"categoria",
-			"value":c.categoria if c else "",
-			"class":""
-		},{
-			"type":"text",
-			"label":"Variação",
-			"name":"variacao",
-			"value":c.variacao if c else "",
-			"class":""
-		},{
-			"type":"text",
-			"label":"Preço",
-			"name":"preco",
-			"value":c.preco if c else "",
+			"type":"textarea",
+			"label":"Endereço",
+			"name":"endereco",
+			"value":c.endereco if c else "",
 			"class":""
 		}]
 
@@ -115,7 +103,7 @@ class ClientesModel(SQLObject):
 			])
 
 		t = {
-			"head"   :["Produto","Categoria","Variação","Preço"],
+			"head"   :["Nome","Whatsapp"],
 			"body"   :lines,
 			"start"  :num_start,
 			"end"    :num_end,

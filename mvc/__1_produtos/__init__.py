@@ -3,10 +3,9 @@ from .controller import Produtos as Controller
 
 def nav():
 	return [{
-		"0-position":0,
-		"id"        :Controller.URL,    
-		"url"       :"/" + Controller.URL + "/",
-		"label"     :Controller.URL.capitalize()
+		"id"    :Controller.URL,    
+		"url"   :"/" + Controller.URL + "/",
+		"label" :Controller.URL.capitalize()
 	}]
 
 def urls():
