@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from settings import *
 from methods  import *
-from .model   import ClientesModel as Model
+from .model   import ProdutosModel as Model
 
-class Clientes:
-	URL = "clientes"
+class Produtos:
+	URL = "produtos"
 
 	def index(self,**kw):
 		Model.start()
@@ -28,14 +28,18 @@ class Clientes:
 			if int(kw["id"]) == 0:
 				Model(
 					nome      = kw["nome"],
-					descricao = kw["whatsapp"],
-					endereco  = kw["endereco"]
+					descricao = kw["descricao"],
+					categoria = kw["categoria"],
+					variacao  = kw["variacao"],
+					preco     = kw["preco"]
 				)
 			else:
 				Model.get(int(kw["id"])).set(
 					nome      = kw["nome"],
-					descricao = kw["whatsapp"],
-					endereco  = kw["endereco"]
+					descricao = kw["descricao"],
+					categoria = kw["categoria"],
+					variacao  = kw["variacao"],
+					preco     = kw["preco"]
 				)
 			return "go:/produtos/"
 		except Exception as err:

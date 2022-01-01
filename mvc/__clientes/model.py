@@ -7,14 +7,16 @@ from settings  import *
 __connection__ = "sqlite:" + APPDATA + "\\database.db"
 
 ORDER_BY   = "nome ASC"
-SINGULAR   = "Cliente"
+SINGULAR   = "Produto"
 PLURAL     = SINGULAR + "s"
 ACTION     = PLURAL.lower()
 
-class ClientesModel(SQLObject):
-	nome     = StringCol()
-	whatsapp = StringCol()
-	endereco = StringCol()
+class ProdutosModel(SQLObject):
+	nome        = StringCol()
+	descricao   = StringCol()
+	categoria   = StringCol()
+	variacao    = StringCol()
+	preco       = StringCol()
 
 	@classmethod
 	def start(self,**kw):

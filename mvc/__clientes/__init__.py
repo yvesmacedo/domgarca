@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .controller import Clientes as Controller
+from .controller import Produtos as Controller
 
 def nav():
 	return [{
