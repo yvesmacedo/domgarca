@@ -4,6 +4,8 @@ from methods   import *
 from sqlobject import *
 from settings  import *
 
+from __1_produtos.model import ProdutosModel 
+
 __connection__ = "sqlite:" + APPDATA + "\\database.db"
 
 ORDER_BY = "nome ASC"
@@ -29,20 +31,27 @@ class MesasModel(SQLObject):
 			c = self.get(id)
 	
 		fields = [{
-			"type":"hidden",
-			"name":"id",
+			"type" :"hidden",
+			"name" :"id",
 			"value":id,
 			"class":""
 		},{
-			"type":"text",
+			"type" :"text",
 			"label":"Número da Mesa",
-			"name":"nome",
+			"name" :"nome",
 			"value":c.nome if c else "",
 			"class":""
 		},{
-			"type":"textarea",
+			"type" :"view",
+			"label":"Produtos",
+			"name" :"produtos",
+			"value":c.produtos if c else "",
+			"class":"",
+			"view" :"produtos.html"
+		},{
+			"type" :"textarea",
 			"label":"Observações",
-			"name":"obs",
+			"name" :"obs",
 			"value":c.obs if c else "",
 			"class":""
 		}]

@@ -43,40 +43,18 @@
 		</div>
 		{% endif %}
 
+		{% if f.type == 'view' %}
+		<div class='input-container'>
+			<label>{{ f.label }}</label><br/>
+			<input type='text' name='{{ f.name }}' value='{{ f.value }}' class='form-control input' onkeyup='telefone(this)' maxlength='15'/>
+			{% include f.view %}
+		</div>
+		{% endif %}
+
 		{% if f.type == 'textarea' %}
 		<div class='input-container'>
 			<label>{{ f.label }}</label><br/>
 			<textarea name='{{ f.name }}' rows="4" class='form-control input'>{{ f.value }}</textarea>
-		</div>
-		{% endif %}
-
-		{% if f.type == 'select' %}
-		<div class='input-container'>
-			<label>{{ f.label }}</label><br/>
-			<input
-				id="select_search_{{ f.name }}"
-				type="text"
-				class="form-control select-search"
-				onkeyup="select_search('select_search_{{ f.name }}')"/>
-
-				<a 
-					id="select_search_{{ f.name }}_button"
-					class="btn btn-sm btn-primary"
-					style="margin-top:-44px;margin-right:3px;float:right;color:white;display:none"
-					onclick="adicionar_nova_especialidade('select_search_{{ f.name }}')">
-                	<i class="fa fa-plus"></i>
-                </a>
-			
-			<select id="select_search_{{ f.name }}_select" name="{{ f.name }}" size="5" class="form-control input">
-				<option value="0">DEIXAR EM BRANCO</option>
-				{% for i in f.itens %}
-					{% if i.id == f.value %}
-					<option value="{{ i.id }}" selected>{{ i.descricao }}</option>
-					{% else %}
-					<option value="{{ i.id }}">{{ i.descricao }}</option>
-					{% endif %}
-				{% endfor %}
-			</select><select id="select_search_{{ f.name }}_dados" style="display:none"></select>		
 		</div>
 		{% endif %}
 	{% endfor %}

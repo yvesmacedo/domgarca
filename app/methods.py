@@ -5,13 +5,8 @@ import base64
 from settings import APPDATA
 from jinja2   import Environment, FileSystemLoader
 
-def view(folder = False):
-	path = readfile(APPDATA + "\\.dir","")
-	if not folder:
-		folder = path + "mvc"
-	else:
-		folder = path + "mvc/" + folder + "/views"
-	return Environment(loader = FileSystemLoader(os.path.join(os.path.dirname(os.path.abspath("README.md")),folder)))
+def view(folder = "mvc"):
+	return Environment(loader = FileSystemLoader(os.path.join(os.path.dirname(os.path.abspath("README.md")), readfile(APPDATA + "\\.dir","") + folder)))
 
 def exists(d):
 	if not os.path.exists(d):
