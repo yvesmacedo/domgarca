@@ -41,10 +41,9 @@ function open_form(){
 
 function close_form(){
 	if($("[name=id]").val() != "0"){
-		$("[name=id]").val("0");
 		$(".input").each(function(){
 			$(this).val("");
-		});
+		}); $("[name=id]").val("0");
 	}
 
 	$("#add-form").stop().fadeOut();

@@ -99,7 +99,7 @@ class ClientesModel(SQLObject):
 		for i in itens:
 			lines.append([
 				i.id,
-				[i.nome,i.categoria,i.variacao,i.preco]
+				[i.nome,i.whatsapp]
 			])
 
 		t = {

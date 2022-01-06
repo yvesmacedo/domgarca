@@ -37,7 +37,7 @@ class Clientes:
 					whatsapp = kw["whatsapp"],
 					endereco = kw["endereco"]
 				)
-			return "go:/produtos/"
+			return "go:/clientes/"
 		except Exception as err:
 			return u"" + str(err)
 
