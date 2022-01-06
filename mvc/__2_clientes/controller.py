@@ -27,15 +27,15 @@ class Clientes:
 		try:
 			if int(kw["id"]) == 0:
 				Model(
-					nome      = kw["nome"],
-					descricao = kw["whatsapp"],
-					endereco  = kw["endereco"]
+					nome     = kw["nome"],
+					whatsapp = kw["whatsapp"],
+					endereco = kw["endereco"]
 				)
 			else:
 				Model.get(int(kw["id"])).set(
-					nome      = kw["nome"],
-					descricao = kw["whatsapp"],
-					endereco  = kw["endereco"]
+					nome     = kw["nome"],
+					whatsapp = kw["whatsapp"],
+					endereco = kw["endereco"]
 				)
 			return "go:/produtos/"
 		except Exception as err:
