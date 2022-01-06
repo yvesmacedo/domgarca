@@ -39,7 +39,7 @@ class ClientesModel(SQLObject):
 			"value":c.nome if c else "",
 			"class":""
 		},{
-			"type":"text",
+			"type":"fone",
 			"label":"Whatsapp",
 			"name":"whatsapp",
 			"value":c.whatsapp if c else "",
