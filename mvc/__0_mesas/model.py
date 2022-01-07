@@ -30,6 +30,8 @@ class MesasModel(SQLObject):
 		if not id == 0:
 			c = self.get(id)
 	
+		lista_de_produtos = ProdutosModel.select().orderBy(["nome ASC"])
+
 		fields = [{
 			"type" :"hidden",
 			"name" :"id",
@@ -47,7 +49,8 @@ class MesasModel(SQLObject):
 			"name" :"produtos",
 			"value":c.produtos if c else "",
 			"class":"",
-			"view" :"produtos.html"
+			"view" :"produtos.html",
+			"list" :lista_de_produtos
 		},{
 			"type" :"textarea",
 			"label":"Observações",

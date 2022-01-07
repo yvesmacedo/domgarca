@@ -1,1 +1,63 @@
-teste
+<style>
+#produtos-list{
+	height:100px;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	background: #fff;
+	border:1px solid #ccc;
+}
+#qt-produto-container{
+	height:200px;
+	overflow:hidden;
+	background: #fff;
+	border:1px solid #ccc;
+	display:none;
+}
+#produtos-list div{
+	cursor:pointer;
+	padding:5px 10px;
+}
+</style>
+
+<script>
+function add_produto(id){
+	$("#add-produto-container").slideUp();
+	$("#qt-produto-container").slideDown();
+}
+
+$("#produto-search").keyup(function(){ clearTimeout(timer);
+	var conteudo = $(this).val().toUpperCase();
+	timer = setTimeout(function(){
+		$("#produtos-list div").each(function(){
+			var linha = $(this).html().toUpperCase();
+			if(linha.indexOf(conteudo) == -1){
+				$(this).css({"display":"none"});
+			}else{
+				$(this).css({"display":"block"});
+			}
+		});
+	},500);
+});
+$(".produto-info").click(function(){
+	var id = $(this).attr("id");
+	add_produto(id);
+});
+</script>
+
+<div id="add-produto-container">
+	<input type="text" id="produto-search" class="form-control input select-search"/>
+	<div id="produtos-list">
+	{% for l in f.list %}
+		<div id="produto-info-{{ l.id }}" class="produto-info">{{ l.nome }} {{ l.variacao }} {{ l.preco }}</div>
+	{% endfor %}
+	</div>
+</div>
+
+<div id="qt-produto-container">
+	<div style="padding:5px 7px">
+		Em desenvolvimento
+		<br/>
+		<input type="button" class="btn btn-primary" value="Adicionar"/>
+		<input type="button" class="btn btn-danger" value="Cancelar"/>
+	</div>
+</div>
