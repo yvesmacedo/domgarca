@@ -12,7 +12,6 @@ f = open(APPDATA + "\\.dir","w")
 f.write(os.path.join(os.path.dirname(os.path.abspath(ARQUIVO)),""))
 f.close()
 
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(ARQUIVO)),"lib"))
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(ARQUIVO)),"mvc"))
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(ARQUIVO)),"app"))
 
