@@ -2,9 +2,8 @@
 import os
 from methods   import *
 from sqlobject import *
-from settings  import *
 
-__connection__ = "sqlite:" + APPDATA + "\\database.db"
+__connection__ = "sqlite:" + appdata() + "\\database.db"
 
 ORDER_BY   = "nome ASC"
 SINGULAR   = "Cliente"

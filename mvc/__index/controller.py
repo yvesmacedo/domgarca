@@ -2,7 +2,6 @@
 import os
 import subprocess
 
-from settings             import *
 from methods              import *
 from cherrypy.lib.static  import serve_file
 

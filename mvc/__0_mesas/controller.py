@@ -3,9 +3,8 @@ import os
 import string
 import subprocess
 
-from settings import *
-from methods  import *
-from .model    import MesasModel as Model
+from methods import *
+from .model  import MesasModel as Model
 
 class Mesas:
 	URL = "mesas"

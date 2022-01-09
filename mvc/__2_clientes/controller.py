@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from settings import *
-from methods  import *
-from .model   import ClientesModel as Model
+from methods import *
+from .model  import ClientesModel as Model
 
 class Clientes:
 	URL = "clientes"

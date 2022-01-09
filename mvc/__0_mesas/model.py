@@ -2,11 +2,10 @@
 import os
 from methods   import *
 from sqlobject import *
-from settings  import *
 
 from __1_produtos.model import ProdutosModel 
 
-__connection__ = "sqlite:" + APPDATA + "\\database.db"
+__connection__ = "sqlite:" + appdata() + "\\database.db"
 
 ORDER_BY = "nome ASC"
 SINGULAR = "Mesa"
@@ -30,6 +29,7 @@ class MesasModel(SQLObject):
 		if not id == 0:
 			c = self.get(id)
 	
+		ProdutosModel.start()#verificar se a tabela existe
 		lista_de_produtos = ProdutosModel.select().orderBy(["nome ASC"])
 
 		fields = [{

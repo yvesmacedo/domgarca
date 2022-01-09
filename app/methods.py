@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
 import os
 import hashlib
+import platform
 import base64
-from settings import APPDATA
-from jinja2   import Environment, FileSystemLoader
+
+from jinja2 import Environment, FileSystemLoader
+
+def appdata():
+	return os.path.expanduser("~") + "\\AppData\\Local\\DomGarca" if platform.system() == "Windows" else os.path.expanduser("~") + "/.DomGarca"
+
+def porta():
+	return 3000
 
 def view(folder = "mvc"):
-	return Environment(loader = FileSystemLoader(os.path.join(os.path.dirname(os.path.abspath("README.md")), readfile(APPDATA + "\\.dir","") + folder)))
+	return Environment(loader = FileSystemLoader(os.path.join(os.path.dirname(os.path.abspath("README.md")), readfile(appdata() + "\\.dir","") + folder)))
 
 def exists(d):
 	if not os.path.exists(d):

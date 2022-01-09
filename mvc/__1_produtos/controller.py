@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from settings import *
 from methods  import *
 from .model   import ProdutosModel as Model
 
